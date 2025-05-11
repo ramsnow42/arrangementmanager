@@ -2,8 +2,7 @@ name: Java Maven CI/CD Pipeline
 
 on:
   workflow_dispatch:  # Manual trigger
-  push:
-    branches: [ main ]
+
 
 jobs:
   build-test-scan:
@@ -37,8 +36,8 @@ jobs:
       uses: sonarsource/sonarcloud-github-action@master
       with:
         args: >
-          -Dsonar.projectKey=your-project-key
-          -Dsonar.organization=your-org
+          -Dsonar.projectKey=ramsnow42key
+          -Dsonar.organization=ramsnow42
           -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
           -Dsonar.java.binaries=target/classes
