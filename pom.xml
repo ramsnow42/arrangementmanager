@@ -30,10 +30,10 @@
         <sonar.organization>ramsnow42key</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.ci.autoconfig.disabled>true</sonar.ci.autoconfig.disabled>
+        <sonar.ci.skipAutoconfig>true</sonar.ci.skipAutoconfig>
+        <sonar.analysis.ci>false</sonar.analysis.ci>
         <sonar.branch.name>main</sonar.branch.name>
-        <sonar.branch.target>main</sonar.branch.target>
         <sonar.scm.provider>git</sonar.scm.provider>
-        <sonar.links.scm>https://github.com/ramsnow42/arrangementmanager</sonar.links.scm>
         
         <!-- Plugin Versions -->
         <jacoco.version>0.8.10</jacoco.version>
