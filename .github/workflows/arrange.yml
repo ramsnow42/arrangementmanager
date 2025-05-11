@@ -42,7 +42,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
         args: >
-          -Dsonar.projectKey=arrangement-manager
+          -Dsonar.projectKey=ramsnow42key_arrangement-manager
           -Dsonar.organization=ramsnow42key  # Replace with your actual org key
           -Dsonar.projectName=arrangement-manager
           -Dsonar.java.binaries=target/classes
