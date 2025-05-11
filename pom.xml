@@ -25,9 +25,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         
-        <!-- Sonar Properties -->
-        <sonar.projectKey>your-project-key</sonar.projectKey>
-        <sonar.organization>your-org</sonar.organization>
+        <!-- Updated Sonar Properties with your org key -->
+        <sonar.projectKey>ramsnow42key_arrangement-manager</sonar.projectKey>
+        <sonar.organization>ramsnow42key</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         
         <!-- Plugin Versions -->
@@ -64,7 +64,7 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot Maven Plugin (WITH MAIN CLASS CONFIGURATION) -->
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -112,11 +112,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <argLine>${surefireArgLine}</argLine>
+                </configuration>
             </plugin>
         </plugins>
     </build>
 
-    <!-- SonarQube Profile -->
+    <!-- Enhanced SonarQube Profile -->
     <profiles>
         <profile>
             <id>sonar</id>
@@ -130,6 +133,10 @@
                 <sonar.java.binaries>${project.basedir}/target/classes</sonar.java.binaries>
                 <sonar.language>java</sonar.language>
                 <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+                <sonar.login>${env.SONAR_TOKEN}</sonar.login>
+                <!-- Additional quality gate properties -->
+                <sonar.qualitygate.wait>true</sonar.qualitygate.wait>
+                <sonar.qualitygate.timeout>300</sonar.qualitygate.timeout>
             </properties>
         </profile>
     </profiles>
