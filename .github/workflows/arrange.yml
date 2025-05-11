@@ -48,6 +48,8 @@ jobs:
           -Dsonar.java.binaries=target/classes
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
           -Dsonar.sourceEncoding=UTF-8
+          -Dsonar.branch.name=main
+          -Dsonar.branch.target=main
 
   build-and-push:
     needs: build-test-scan
