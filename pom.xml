@@ -4,50 +4,57 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.0</version> <!-- Or latest stable version -->
-        <relativePath/>
-    </parent>
-
+    <!-- Basic Project Info -->
     <groupId>com.example</groupId>
     <artifactId>arrangement-manager</artifactId>
     <version>1.0.0</version>
     <name>arrangement-manager</name>
-    <description>Demo project for Arrangement Manager API</description>
+    <description>Arrangement Management API</description>
+    <packaging>jar</packaging>
+
+    <!-- Parent POM (Spring Boot) -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.0</version>
+        <relativePath/>
+    </parent>
 
     <properties>
         <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        
+        <!-- Sonar Properties -->
         <sonar.projectKey>your-project-key</sonar.projectKey>
         <sonar.organization>your-org</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        
+        <!-- Plugin Versions -->
         <jacoco.version>0.8.10</jacoco.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
     </properties>
 
     <dependencies>
-        <!-- Spring Boot Starter Web -->
+        <!-- Spring Boot Starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!-- Spring Boot Actuator (for health endpoint) -->
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- Spring Boot Test -->
+        <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- Lombok (optional) -->
+        <!-- Lombok (Optional) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -57,11 +64,12 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot Maven Plugin -->
+            <!-- Spring Boot Maven Plugin (WITH MAIN CLASS CONFIGURATION) -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <mainClass>com.example.arrangementmanager.ArrangementManagerApplication</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -69,9 +77,16 @@
                         </exclude>
                     </excludes>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
-            <!-- Jacoco for Code Coverage -->
+            <!-- Jacoco Code Coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -92,16 +107,16 @@
                 </executions>
             </plugin>
 
-            <!-- Surefire for Unit Tests -->
+            <!-- Unit Testing -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
 
-    <!-- SonarCloud Properties (can also be passed via command line) -->
+    <!-- SonarQube Profile -->
     <profiles>
         <profile>
             <id>sonar</id>
@@ -113,6 +128,8 @@
                     ${project.basedir}/target/site/jacoco/jacoco.xml
                 </sonar.coverage.jacoco.xmlReportPaths>
                 <sonar.java.binaries>${project.basedir}/target/classes</sonar.java.binaries>
+                <sonar.language>java</sonar.language>
+                <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
             </properties>
         </profile>
     </profiles>
