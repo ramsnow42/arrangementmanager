@@ -47,6 +47,7 @@ jobs:
           -Dsonar.projectName=arrangement-manager
           -Dsonar.java.binaries=target/classes
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+          -Dsonar.ci.autoconfig.disabled=true  # Add this line
           -Dsonar.sourceEncoding=UTF-8
           -Dsonar.branch.name=main
           -Dsonar.branch.target=main
