@@ -75,6 +75,7 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         context: .
+        file: ./Dockerfile  # Explicitly point to your Dockerfile
         push: true
         tags: |
           ${{ secrets.DOCKER_HUB_USERNAME }}/arrangement-manager:latest
