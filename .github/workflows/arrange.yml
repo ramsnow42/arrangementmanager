@@ -67,7 +67,7 @@ jobs:
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}  # Changed from TOKEN to PASSWORD
+        password: ${{ secrets.DOCKER_HUB_TOKEN }}  # Using token instead of password
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
