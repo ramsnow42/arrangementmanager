@@ -42,7 +42,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
         args: >
-          -Dsonar.projectKey=arrangementmanager
+          -Dsonar.projectKey=ramsnow42arrangementmanager
           -Dsonar.organization=ramsnow42key  # Replace with your actual org key
           -Dsonar.projectName=arrangement-manager
           -Dsonar.java.binaries=target/classes
@@ -50,6 +50,8 @@ jobs:
           -Dsonar.sourceEncoding=UTF-8
           -Dsonar.branch.name=main
           -Dsonar.branch.target=main
+          -Dsonar.scm.provider=git
+          -Dsonar.links.scm=https://github.com/ramsnow42/arrangementmanager
 
   build-and-push:
     needs: build-test-scan

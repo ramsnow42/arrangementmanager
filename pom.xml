@@ -26,11 +26,13 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         
         <!-- Updated Sonar Properties with your org key -->
-        <sonar.projectKey>arrangementmanager</sonar.projectKey>
+        <sonar.projectKey>ramsnow42arrangementmanager</sonar.projectKey>
         <sonar.organization>ramsnow42key</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.branch.name>main</sonar.branch.name>
         <sonar.branch.target>main</sonar.branch.target>
+        <sonar.scm.provider>git</sonar.scm.provider>
+        <sonar.links.scm>https://github.com/ramsnow42/arrangementmanager</sonar.links.scm>
         
         <!-- Plugin Versions -->
         <jacoco.version>0.8.10</jacoco.version>
